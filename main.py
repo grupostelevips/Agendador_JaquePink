@@ -9,14 +9,14 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 
 # =====================================================================
-# CONFIGURAÇÕES PRINCIPAIS (PREENCHA COM OS DADOS DO NOVO BOT)
+# CONFIGURAÇÕES PRINCIPAIS
 # =====================================================================
 BOT_AGENDADOR_TOKEN = "9255952434:AAHJpaYaG2ZVY8MRyeFj3h5PSPLg_-Svtow"
 PREVIAS_JAQUE_GROUP_ID = "-1001994331287"
 ADMIN_ID = "7008304182"
 
-# Links diretos dos seus bots de venda (com ?start= para iniciar o funil na hora)
-LINK_BOT_JAQUE = "https://t.me/Agendador_JaquePink_bot?start=previas"
+# ATENÇÃO: Coloque na linha abaixo o @ do BOT DE VENDAS da Jaque Pink (não o do agendador)
+LINK_BOT_JAQUE = "https://t.me/ADM_JaquePink_bot?start=previas"
 LINK_BOT_PLAYBOX = "https://t.me/ADM_TudaoVIP_bot?start=jaqueprevias"
 
 # Horários no fuso de Brasília (UTC-3)
@@ -157,9 +157,7 @@ COPYS_GERAIS_CTA = [
 # ACERVO DE PRÉVIAS (COLE AQUI AS LINHAS GERADAS PELO MODO EXTRATOR)
 # =====================================================================
 ACERVO_PREVIAS = [
-    # Exemplo de como fica cada item após encaminhar para o bot:
-    # {"tipo": "video", "file_id": "BAACAgEAAxk...", "legenda": "Olha o que ela fez antes de sair de casa 😈"},
-    # {"tipo": "photo", "file_id": "AgACAgEAAxk...", "legenda": "Sem filtro nenhum hoje 🔥"},
+    # Cole aqui as linhas geradas ao encaminhar fotos, vídeos e GIFs para o bot:
 ]
 
 
@@ -192,7 +190,7 @@ def carregar_estado():
 
 
 # =====================================================================
-# FUNÇÕES DE ENVIO TELEGRAM
+# FUNÇÕES DE ENVIO TELEGRAM (COM SUPORTE A FOTO, VÍDEO E GIF)
 # =====================================================================
 def enviar_mensagem(chat_id, texto, markup=None):
     payload = {"chat_id": chat_id, "text": texto, "parse_mode": "Markdown"}
@@ -218,7 +216,6 @@ def enviar_enquete(chat_id, pergunta, opcoes):
         req = requests.post(f"{TELEGRAM_API_URL}/sendPoll", json=payload, timeout=15)
         if req.status_code == 200:
             return True
-        # Fallback para versões legadas caso necessário
         payload["options"] = [str(o)[:100] for o in opcoes]
         req2 = requests.post(f"{TELEGRAM_API_URL}/sendPoll", json=payload, timeout=15)
         return req2.status_code == 200
@@ -228,8 +225,15 @@ def enviar_enquete(chat_id, pergunta, opcoes):
 
 
 def enviar_midia(chat_id, tipo, file_id, legenda, markup=None):
-    endpoint = "sendPhoto" if tipo == "photo" else "sendVideo"
-    campo_midia = "photo" if tipo == "photo" else "video"
+    if tipo == "photo":
+        endpoint = "sendPhoto"
+        campo_midia = "photo"
+    elif tipo == "animation":
+        endpoint = "sendAnimation"
+        campo_midia = "animation"
+    else:
+        endpoint = "sendVideo"
+        campo_midia = "video"
 
     payload = {
         "chat_id": chat_id,
@@ -380,7 +384,7 @@ def antes_de_requisicao():
 
 
 # =====================================================================
-# ROTAS WEB E WEBHOOK (COM MODO EXTRATOR AUTOMÁTICO DE MÍDIAS)
+# ROTAS WEB E WEBHOOK (COM MODO EXTRATOR AUTOMÁTICO DE FOTOS, VÍDEOS E GIFS)
 # =====================================================================
 @app.route("/", methods=["GET"])
 def home():
@@ -424,14 +428,17 @@ def telegram_webhook():
 
     texto = msg.get("text", "")
 
-    # MODO EXTRATOR: Encaminhe qualquer foto ou vídeo para o bot e ele gera a linha pronta!
-    if "video" in msg or "photo" in msg:
-        if "video" in msg:
+    # MODO EXTRATOR: Encaminhe qualquer foto, vídeo ou GIF para o bot e ele gera a linha pronta!
+    if "animation" in msg or "video" in msg or "photo" in msg:
+        if "animation" in msg:
+            tipo = "animation"
+            file_id = msg["animation"]["file_id"]
+        elif "video" in msg:
             tipo = "video"
             file_id = msg["video"]["file_id"]
         else:
             tipo = "photo"
-            file_id = msg["photo"][-1]["file_id"]  # Pega a maior resolução da foto
+            file_id = msg["photo"][-1]["file_id"]
 
         legenda_orig = (msg.get("caption") or "").replace('"', '\\"').replace("\n", "\\n")
         linha_codigo = f'{{"tipo": "{tipo}", "file_id": "{file_id}", "legenda": "{legenda_orig}"}},'
@@ -448,7 +455,7 @@ def telegram_webhook():
         enviar_mensagem(
             chat_id,
             "🤖 **Agendador da Jaque Pink Pronto!**\n\n"
-            "• **Encaminhe** qualquer foto ou vídeo do grupo de prévias aqui que eu te mando o código pronto com a legenda original.\n"
+            "• **Encaminhe** qualquer foto, vídeo ou GIF do grupo de prévias aqui que eu te mando o código pronto com a legenda original.\n"
             "• `/testar_enquete` — Dispara uma enquete agora no grupo\n"
             "• `/testar_midia` — Dispara a próxima mídia + copy + botão agora\n"
             "• `/testar_playbox` — Dispara a oferta da PlayBox agora"
