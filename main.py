@@ -11,8 +11,7 @@ app = Flask(__name__)
 # =====================================================================
 # CONFIGURAÇÕES PRINCIPAIS (PREENCHA COM OS DADOS DO NOVO BOT)
 # =====================================================================
-BOT_AGENDADOR_TOKEN = "9255952434:AAHJpaYaG2ZVY8MRyeFj3h5PSPLg_-Svtow
-"
+BOT_AGENDADOR_TOKEN = "9255952434:AAHJpaYaG2ZVY8MRyeFj3h5PSPLg_-Svtow"
 PREVIAS_JAQUE_GROUP_ID = "-1001994331287"
 ADMIN_ID = "7008304182"
 
