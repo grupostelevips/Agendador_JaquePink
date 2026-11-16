@@ -15,7 +15,7 @@ BOT_AGENDADOR_TOKEN = "9255952434:AAHJpaYaG2ZVY8MRyeFj3h5PSPLg_-Svtow"
 PREVIAS_JAQUE_GROUP_ID = "-1001994331287"
 ADMIN_ID = "7008304182"
 
-# ATENÇÃO: Coloque na linha abaixo o @ do BOT DE VENDAS da Jaque Pink (não o do agendador)
+# ATENÇÃO: Coloque na linha abaixo o @ do BOT DE VENDAS da Jaque Pink
 LINK_BOT_JAQUE = "https://t.me/ADM_JaquePink_bot?start=previas"
 LINK_BOT_PLAYBOX = "https://t.me/ADM_TudaoVIP_bot?start=jaqueprevias"
 
@@ -45,7 +45,7 @@ estado = {
 # =====================================================================
 # VÍDEO 3 DA PLAYBOX (ENCAMINHE O VÍDEO 3 PARA ESTE BOT E COLE O ID AQUI)
 # =====================================================================
-VIDEO_PLAYBOX_ID = "COLE_AQUI_O_FILE_ID_DO_VIDEO_3_NESTE_BOT"
+VIDEO_PLAYBOX_ID = "BAACAgEAAxkBAANpavpuTdaxXkvljEySiv2b1YGxaasAAvcMAAK2mtBHXApXDcGXFKI9BA"
 
 COPY_OFERTA_PLAYBOX = (
     "💣 **QUER ACESSO A UM ACERVO SECRETO QUE NÃO PODE FICAR ABERTO AQUI?** 🔞\n\n"
@@ -154,10 +154,29 @@ COPYS_GERAIS_CTA = [
 ]
 
 # =====================================================================
-# ACERVO DE PRÉVIAS (COLE AQUI AS LINHAS GERADAS PELO MODO EXTRATOR)
+# ACERVO DE PRÉVIAS (20 MÍDIAS INTERCALADAS: VÍDEOS, FOTOS E GIFS)
 # =====================================================================
 ACERVO_PREVIAS = [
-    # Cole aqui as linhas geradas ao encaminhar fotos, vídeos e GIFs para o bot:
+    {"tipo": "video", "file_id": "BAACAgEAAxkBAAMWavpp47Mn9HudWAHvpMsgNDoIGR8AArIFAAJ9OyFFNfI2mnx55PU9BA", "legenda": "Sou tímida mas gosto de ser gravada… aos poucos vou me soltando 🙈🤭"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMYavpp4wSjGRK6CiNyjUGb1ZgxffAAAi6sMRss5ZFHYC3DdNIq4moBAAMCAAN5AAM9BA", "legenda": "Quem mais já viu? 🤭\n\nTem VÍDEO no meu GRUPO PRIVADO 🙈"},
+    {"tipo": "animation", "file_id": "CgACAgEAAxkBAAMXavpp4ymm9Mo-VslR1cqD-scCEWUAAj0DAAIy8XBGRuJ_QCgDgKc9BA", "legenda": "Eu na casa do amigo do meu pai que me viu nascer, crescer e agora me pega no sigilo 🙈"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMZavpp4xTcTQFfcYlRAtcUrqXisRAAAlusMRtrhahHymISTzfhv3EBAAMCAAN5AAM9BA", "legenda": "Brava com meu tio por que não quis jogar dentro... Assim não dá 😡🤬"},
+    {"tipo": "video", "file_id": "BAACAgEAAxkBAAMkavpp43VXXGepRL3kRc3EsUV2tFMAAgUFAAL7-fhGXpU60YpClZo9BA", "legenda": "Amigo do meu pai veio no meu quarto rapidinho 🤤🙊"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMeavpp4wuMhmiDb_vseEIXlzOHwcsAAnasMRufY9FFV3MhlWkAAUpiAQADAgADeQADPQQ", "legenda": "Tem dias que eu já acordo pensando em passar a mão no 🐥 do primeiro Uber que aceitar minha corrida"},
+    {"tipo": "animation", "file_id": "CgACAgEAAxkBAAMaavpp4604WSNmsR3LAAEQmFCtJQABhwACbQMAArDwMUT7G4R5WoeUuz0E", "legenda": "Eu na casa do amigo do meu pai que me pegava no colo quando era pequena... 🙈😅"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMfavpp40rZDK_JsJs1Ncojy6UCiYoAAjWxMRvlz9BG9fDsNbLsNY0BAAMCAAN5AAM9BA", "legenda": "Meu titio descobrir que eu saí com o amigo do meu papai e me castigou com força... Eu merecia 😓"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMgavpp40ITuT2mzIbz8irlRTktVIwAAq6uMRv7-fhGkkF5hwIfXTQBAAMCAAN4AAM9BA", "legenda": "Não tinha dinheiro pra pagar o Uber tive que ir pra casa dele pagar como ele quis 🤷🏼‍♀️😅"},
+    {"tipo": "animation", "file_id": "CgACAgEAAxkBAAMbavpp42ZgkvCs74dNHAtBaVx_UkgAAnMEAAIwfVFEQ7cHSkf9rpk9BA", "legenda": "Mandei essa foto pro meu primo ele me bloqueou 😢"},
+    {"tipo": "video", "file_id": "BAACAgEAAxkBAAMlavpp48MuQjpO7xwS3XcM9SWtNQ8AAn0FAAKiwfhG5Jdz5XJowHY9BA", "legenda": "A primeira coisa que eu faço todos os dias depois de acordar 🥱"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMhavpp4020JzkCkFOeYnq--YKoyGEAAqauMRv7-fhGdz_lxDR9gLwBAAMCAAN5AAM9BA", "legenda": "Dormi com meu primo hoje, dormi assim do lado dele 😂"},
+    {"tipo": "animation", "file_id": "CgACAgEAAxkBAAMcavpp4-DOSdoMElTESBY2qdl7xR0AAl8EAAJL6BFFq3BPGe62GZw9BA", "legenda": "O amigo do papai adora me ver assim 🤭"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMiavpp4x6iTrsNXqPaW3g347b3OCIAAriuMRv7-fhG2fRclMXTP8IBAAMCAAN5AAM9BA", "legenda": "Outro Uber que me levou pro matinho, não tinha dinheiro pro motel 😂"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMjavpp46LeZzEHPPfHgrESW7AGJy4AAr2uMRv7-fhG6z8MkvGZk3sBAAMCAAN5AAM9BA", "legenda": "Calcinha que ganhei de presente do meu professor, esse dia estava com ele ☺️"},
+    {"tipo": "animation", "file_id": "CgACAgEAAxkBAAMdavpp44cycdC_-iZ4MrpTSpcPHGUAAq8DAAJpkThE_IlKpSv1di89BA", "legenda": "MEU GRUPO PRIVADO 🔥\n\nConteúdos com meu Titio,\nCom Papais de amigas,\nCom amigos do meu Papai, Uber's, Solos e com qualquer Homem que eu achei gostoso 😋🙈"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMmavpp4yiou5EZuRN-jpAZ2YG47i4AAmutMRtwdhlEI7zzv333yZYBAAMCAAN5AAM9BA", "legenda": "O amigo do meu papai duvidou que eu fazia ele 💦 só com a boca... Não aguentou nem 2 minutos 🤣🤣🤣"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMnavpp4ybHjNrI9svn2FEar5Y3UaIAAjCsMRtc6mlF2Z2OVHVOcPkBAAMCAAN5AAM9BA", "legenda": "Padrasto da minha amiga me pagou 200 reais por essa foto, e tô mostrando de graça pra vocês, amo vocês 🙈"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMoavpp41ruP2Z_Nw_JOzwDCIETiF8AAjOtMRu86IFGumg-sIUQk9gBAAMCAAN5AAM9BA", "legenda": "Assim faço alegria de muitos 🙈"},
+    {"tipo": "photo", "file_id": "AgACAgEAAxkBAAMpavpp4-vzID3gDukrMsqoZm6DN5sAAn2uMRvu7-lFia9DmiD2yEwBAAMCAAN5AAM9BA", "legenda": "Fiquei de castigo hoje, e ainda apanhei bastante 😒"},
 ]
 
 
